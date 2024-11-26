@@ -1,15 +1,23 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { getAnalytics, logEvent } from 'firebase/analytics';
+import { 
+    getAuth, 
+    GoogleAuthProvider, 
+    signInWithPopup 
+} from 'firebase/auth';
+import { 
+    getAnalytics, 
+    logEvent, 
+    isSupported as isAnalyticsSupported 
+} from 'firebase/analytics';
 import { 
     getFirestore, 
+    collection, 
     doc, 
+    addDoc, 
     setDoc, 
     getDoc, 
-    collection,
-    addDoc,
-    getDocs,
-    query,
+    getDocs, 
+    query, 
     where 
 } from 'firebase/firestore';
 
@@ -27,18 +35,38 @@ class FirebaseApi {
         };
 
         // Initialize Firebase
+        this.currentUser = null
         const app = initializeApp(firebaseConfig);
         this.auth = getAuth(app);
         this.googleProvider = new GoogleAuthProvider();
-        this.analytics = getAnalytics(app);
         this.db = getFirestore(app);
+
+        // Initialize analytics only if supported
+        isAnalyticsSupported()
+            .then((supported) => {
+                if (supported) {
+                    this.analytics = getAnalytics(app);
+                } else {
+                    console.warn('Analytics is not supported in this environment.');
+                    this.analytics = null;
+                }
+            })
+            .catch((error) => {
+                console.error('Error checking analytics support:', error);
+                this.analytics = null;
+            });
     }
 
+    isUserExist() {
+        return this.currentUser;
+        
+    }
     // Google Sign In method
     async signInWithGoogle() {
         try {
-            const result = await this.signInWithGoogle(this.auth, this.googleProvider);
-            return result.user;
+            const result = await signInWithPopup(this.auth, this.googleProvider);
+            console.log(result);
+            this.currentUser = result.user.uid
         } catch (error) {
             console.error('Error signing in with Google:', error);
             throw error;
@@ -58,18 +86,25 @@ class FirebaseApi {
 
     // Add analytics logging method
     logAnalyticsEvent(eventName, eventParams = {}) {
-        try {
-            logEvent(this.analytics, eventName, eventParams);
-        } catch (error) {
-            console.error('Error logging analytics event:', error);
+        if (typeof window !== 'undefined' && this.analytics) {
+            try {
+                logEvent(this.analytics, eventName, eventParams);
+            } catch (error) {
+                console.error('Error logging analytics event:', error);
+            }
+        } else {
+            console.warn('Analytics event logging skipped (window or analytics not available).');
         }
     }
 
     // Add document to collection
-    async addDocument(collectionName, data) {
+    async addDocument(collectionName, expirence, members, subject, teamName) {
         try {
             const docRef = await addDoc(collection(this.db, collectionName), {
-                ...data,
+                expirence: expirence,
+                members: members,
+                subject: subject,
+                teamName: teamName,
                 createdAt: new Date(),
             });
             return docRef.id;
@@ -80,10 +115,13 @@ class FirebaseApi {
     }
 
     // Add document with custom ID
-    async setDocument(collectionName, docId, data) {
+    async setDocument(collectionName, docId, firsName, emailAddress, phoneNum, medicalInfo) {
         try {
-            await setDoc(doc(this.db, collectionName, docId), {
-                ...data,
+            await setDoc(doc(this.db, collectionName, phoneNum), {
+                firsName:firsName,
+                emailAddress:emailAddress,
+                phoneNum:phoneNum,
+                medicalInfo:medicalInfo,
                 updatedAt: new Date(),
             });
             return docId;
@@ -143,4 +181,5 @@ class FirebaseApi {
     }
 }
 
-export default FirebaseApi;
+const firebaseapi = new FirebaseApi()
+export default firebaseapi;

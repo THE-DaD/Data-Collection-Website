@@ -1,13 +1,11 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import Firebase from "../firebase/firebaseApi.js"
+import Firebase from "../firebase/firebaseapi.js"
+
 export default function HomePage() {
 
-const handleSignUp = () => {
-  const firebase = new Firebase();
-  firebase.signInWithGoogle();
-}
+
 
 
   return (
@@ -36,9 +34,9 @@ const handleSignUp = () => {
               </Link>
             </nav>
             <div className="flex items-center space-x-4">
-              <Button variant="ghost" onClick={handleSignUp} size="sm" className="text-gray-300 hover:text-red-500">
-                הגש מועמדות
-              </Button>
+              <Button variant="ghost" size="sm" className="text-gray-300 hover:text-red-500">
+              <Link href="/sign-up">הרשמה </Link>  
+             </Button>
             </div>
           </div>
         </header>

@@ -1,5 +1,5 @@
 'use client'
-
+import Firebaseapi from '@/firebase/firebaseapi'
 import { useState } from 'react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
@@ -26,6 +26,7 @@ export default function TeamTeachingPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+    Firebaseapi.addDocument("GroupInfo", formData.experience, formData.members, formData.subject, formData.teamName)
     console.log('Form submitted:', formData)
   }
 
