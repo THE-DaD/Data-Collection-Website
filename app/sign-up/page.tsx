@@ -3,7 +3,7 @@
 
 import { Button } from '@/components/ui/button'
 
-import Firebase from '../../firebase/firebaseapi'
+import Firebase from '../../firebase/firebaseAPI'
 
 export default function SignUp() {
     
