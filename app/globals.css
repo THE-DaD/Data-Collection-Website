@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 0%;
+  --foreground: 0 0% 100%;
+  
+  --card: 0 0% 4%;
+  --card-foreground: 0 0% 100%;
+  
+  --popover: 0 0% 4%;
+  --popover-foreground: 0 0% 100%;
+  
+  --primary: 0 100% 50%;
+  --primary-foreground: 0 0% 100%;
+  
+  --secondary: 0 0% 14.9%;
+  --secondary-foreground: 0 0% 100%;
+  
+  --muted: 0 0% 14.9%;
+  --muted-foreground: 0 0% 63.9%;
+  
+  --accent: 0 100% 50%;
+  --accent-foreground: 0 0% 100%;
+  
+  --destructive: 0 100% 50%;
+  --destructive-foreground: 0 0% 100%;
+  
+  --border: 0 100% 50%;
+  --input: 0 0% 14.9%;
+  --ring: 0 100% 50%;
+}
+
+body {
+  background-color: black;
+  color: white;
+}
+
+.bg-gradient-radial {
+  background-image: radial-gradient(circle at center,
+      var(--tw-gradient-stops));
+}
+
+/* RTL support for form elements */
+[dir="rtl"] input,
+[dir="rtl"] textarea {
+  text-align: right;
+}
+
+/* Adjust placeholder alignment for RTL */
+[dir="rtl"] input::placeholder,
+[dir="rtl"] textarea::placeholder {
+  text-align: right;
+}
+
