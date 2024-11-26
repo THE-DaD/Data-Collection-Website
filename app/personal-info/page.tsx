@@ -1,5 +1,5 @@
 'use client'
-import FirebaseApi from '../../firebase/firebaseAPI'
+import firebaseapi from '../../firebase/firebaseapi';
 import { useState } from 'react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
@@ -26,7 +26,7 @@ export default function PersonalInfoPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    FirebaseApi.setDocument("PersonalInfo", formData.phone, formData.name, formData.email, formData.phone, formData.background)
+    firebaseapi.setDocument("PersonalInfo", formData.phone, formData.name, formData.email, formData.phone, formData.background)
     console.log('Form submitted:', formData)
   }
 

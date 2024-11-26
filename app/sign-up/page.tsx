@@ -3,12 +3,12 @@
 
 import { Button } from '@/components/ui/button'
 
-import Firebase from '../../firebase/firebaseAPI'
+import firebaseapi from '../../firebase/firebaseapi';
 
 export default function SignUp() {
     
     const  handleClick = async () => {
-     await Firebase.signInWithGoogle();
+     await firebaseapi.signInWithGoogle();
    }
 
 
