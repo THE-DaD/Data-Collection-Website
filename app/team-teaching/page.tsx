@@ -1,5 +1,5 @@
 'use client'
-import Firebaseapi from '../../firebase/firebaseAPI.js'
+import Firebaseapi from '../../firebase/FireBaseApi'
 import { useState } from 'react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
