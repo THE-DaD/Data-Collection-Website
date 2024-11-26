@@ -1,6 +1,7 @@
 [build]
+  command = "npm run build"
   publish = "out"
-  command = "npm run build && next export"
+
 
 [build.environment]
   NODE_VERSION = "16.x"
