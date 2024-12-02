@@ -2,12 +2,10 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import firebaseapi from '../firebase/firebaseapi';
+import { useCallback, useEffect } from "react";
 
 export default function HomePage() {
-
-
-
-
+    
   return (
     <div className="flex flex-col min-h-screen bg-black text-white" dir="rtl">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-red-900/20 via-black to-black" />

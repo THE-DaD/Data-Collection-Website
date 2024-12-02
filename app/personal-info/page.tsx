@@ -16,6 +16,15 @@ export default function PersonalInfoPage() {
     background: ''
   })
 
+  const resetForm = () =>{
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      background: ''
+    })
+  }
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData(prevData => ({
@@ -23,12 +32,19 @@ export default function PersonalInfoPage() {
       [name]: value
     }))
   }
-
+  
   const handleSubmit = (e: React.FormEvent) => {
+    if(firebaseapi.isUserExist()){
     e.preventDefault()
     firebaseapi.setDocument("PersonalInfo", formData.phone, formData.name, formData.email, formData.phone, formData.background)
     console.log('Form submitted:', formData)
+    }
+  else{
+    alert("User has not signed in");
+  } 
+  resetForm();
   }
+  
 
   return (
     <div className="min-h-screen bg-black text-white" dir="rtl">
@@ -112,7 +128,6 @@ export default function PersonalInfoPage() {
                   required
                 />
               </div>
-
               <Button 
                 type="submit" 
                 className="w-full h-12 bg-red-600 hover:bg-red-500 text-white font-medium transition-colors"
@@ -125,5 +140,7 @@ export default function PersonalInfoPage() {
       </div>
     </div>
   )
+
 }
+
 
