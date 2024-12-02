@@ -34,7 +34,7 @@ class FirebaseApi {
             appId: "1:413037593495:web:79debb18c56afcda23bad2",
             measurementId: "G-05PP9RDNCS"
         };
-
+        this.currentUser = null;
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         this.auth = getAuth(app);
@@ -116,6 +116,7 @@ class FirebaseApi {
                 members: members,
                 subject: subject,
                 teamName: teamName,
+                userId: this.currentUser,
                 createdAt: new Date(),
             });
             return docRef.id;
@@ -135,6 +136,7 @@ class FirebaseApi {
                 emailAddress: emailAddress,
                 phoneNum: phoneNum,
                 medicalInfo: medicalInfo,
+                userId: this.currentUser,
                 updatedAt: new Date(),
             });
             return docId;
