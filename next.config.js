@@ -4,4 +4,6 @@ const nextConfig = {
   output: 'export', // Ensures Next.js will export the app as static HTML
 };
 
-module.exports = nextConfig;
+module.exports = {
+  output: 'standalone', // Configure output mode for static export
+};
