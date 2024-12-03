@@ -28,16 +28,16 @@ export default function HomePage() {
             <div className="absolute inset-0 bg-gradient-to-b from-red-900/50 to-black/90" />
             <div className="relative container px-4 md:px-6 text-center">
               <h1 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4 bg-gradient-to-l from-white to-red-500 bg-clip-text text-transparent">
-                עתיד הרפואה
+                עתיד ההכשרה
               </h1>
               <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto">
                 מצוינות בחינוך רפואי
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4">
-                <Button asChild size="lg" className="rounded-full bg-red-600 hover:bg-red-500 text-white">
+                <Button asChild size="lg" style={{width: "25%" ,marginTop: "5%" ,marginLeft: "5%"}} className="rounded-full bg-red-600 hover:bg-red-500 text-white">
                   <Link href="/personal-info">מידע אישי</Link>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="rounded-full border-red-600 text-white hover:bg-red-600">
+                <Button asChild variant="outline" size="lg" style={{width: "25%",marginTop: "5%", marginRight: "5%"}} className="rounded-full border-red-600 text-white hover:bg-red-600">
                   <Link href="/team-teaching">ניסיון בהוראת צוות</Link>
                 </Button>
               </div>
