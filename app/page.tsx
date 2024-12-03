@@ -14,24 +14,7 @@ export default function HomePage() {
         {/* Navigation */}
         <header className="fixed top-0 w-full bg-black/80 backdrop-blur-md z-50 border-b border-red-800">
           <div className="container flex h-12 items-center justify-between px-4">
-            <Link className="flex items-center justify-center" href="#">
-              <MedicalIcon className="h-6 w-6" />
-            </Link>
-            <nav className="hidden md:flex space-x-8">
-              <Link className="text-sm text-gray-300 hover:text-red-500 transition-colors" href="#">
-                תוכניות
-              </Link>
-              <Link className="text-sm text-gray-300 hover:text-red-500 transition-colors" href="#">
-                קבלה
-              </Link>
-              <Link className="text-sm text-gray-300 hover:text-red-500 transition-colors" href="#">
-                מחקר
-              </Link>
-              <Link className="text-sm text-gray-300 hover:text-red-500 transition-colors" href="#">
-                אודות
-              </Link>
-            </nav>
-            <div className="flex items-center space-x-4">
+            <div className="flex items-left space-x-4">
               <Button variant="ghost" size="sm" className="text-gray-300 hover:text-red-500">
               <Link href="/sign-up">הרשמה </Link>  
              </Button>
@@ -116,17 +99,7 @@ export default function HomePage() {
         <footer className="border-t border-red-800">
           <div className="container px-4 py-6 flex flex-col md:flex-row justify-between items-center">
             <p className="text-sm text-gray-400">© 2024 בית הספר לרפואה. כל הזכויות שמורות.</p>
-            <nav className="flex gap-6 mt-4 md:mt-0">
-              <Link className="text-sm text-gray-400 hover:text-red-500 transition-colors" href="#">
-                פרטיות
-              </Link>
-              <Link className="text-sm text-gray-400 hover:text-red-500 transition-colors" href="#">
-                תנאים
-              </Link>
-              <Link className="text-sm text-gray-400 hover:text-red-500 transition-colors" href="#">
-                צור קשר
-              </Link>
-            </nav>
+
           </div>
         </footer>
       </div>
