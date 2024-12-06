@@ -8,8 +8,9 @@ import './signup.css';
 
 export default function SignUp() {
     
-  const  handleClick = async () => {
+  const  handleClick = async  () => {
    await firebaseapi.signInWithGoogle();
+  
  }
 
    
