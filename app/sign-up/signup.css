@@ -1,0 +1,68 @@
+.button {
+  transition: all 0.3s ease-in-out;
+  font-family: "Geist";
+}
+
+.button {
+  width: 170px;
+  height: 60px;
+  border-radius: 50px;
+  background-image: linear-gradient(135deg, #000000 0%, #ff0000 100%);
+  box-shadow: 0 20px 30px -6px rgba(238, 103, 97, 0.5);
+  outline: none;
+  cursor: pointer;
+  border: none;
+  font-size: 17px;
+  color: white;
+  
+}
+
+.button:hover {
+  transform: translateY(3px);
+  box-shadow: none;
+}
+
+.button:active {
+  opacity: 0.5;
+}
+  
+.signup-page {  
+  background: linear-gradient(#6d0000, #000000);
+  height: 100vh; 
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+  
+h1 {
+  font-family: "Geist";
+  margin: 0; 
+  line-height: 1;
+  font-size: 100px;
+  position: fixed;
+  right: 300px;
+}
+
+.arrow {
+  position: absolute;
+  border: solid rgb(255, 255, 255);
+  border-width: 0 4px 3px 0;
+  display: inline-block;
+  padding: 100px;
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+  right: 400px;
+}
+
+p {
+  font-family: "Geist";
+  opacity: 0.2;
+  position: absolute;
+  line-height: 3;
+  font-size: 55px;
+  position: absolute;
+  left: 300px;
+  top: 50px;
+
+}
+
