@@ -15,6 +15,14 @@ export default function TeamTeachingPage() {
     subject: '',
     experience: ''
   })
+  const resetForm = () =>{
+    setFormData({
+      teamName: '',
+      members: '',
+      subject: '',
+      experience: ''
+    })
+  }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -25,10 +33,18 @@ export default function TeamTeachingPage() {
   }
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    firebaseapi.addDocument("GroupInfo", formData.experience, formData.members, formData.subject, formData.teamName)
-    console.log('Form submitted:', formData)
-  }
+    if(firebaseapi.isUserExist()){
+      e.preventDefault()
+      firebaseapi.addDocument("GroupInfo", formData.experience, formData.members, formData.subject, formData.teamName)
+      console.log('Form submitted:', formData)
+      }
+    else{
+      alert("User has not signed in");
+    } 
+    resetForm();
+    }
+    
+  
 
   return (
     <div className="min-h-screen bg-black text-white" dir="rtl">

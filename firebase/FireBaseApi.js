@@ -23,6 +23,7 @@ import {
     where 
 } from 'firebase/firestore';
 
+
 class FirebaseApi {
     constructor() {
         const firebaseConfig = {
@@ -34,12 +35,17 @@ class FirebaseApi {
             appId: "1:413037593495:web:79debb18c56afcda23bad2",
             measurementId: "G-05PP9RDNCS"
         };
-
+        if (typeof window !== "undefined") {
+            // Now it's safe to use localStorage
+            this.currentUser  = sessionStorage.getItem("currentUser") || "";
+        }
+        
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         this.auth = getAuth(app);
         this.googleProvider = new GoogleAuthProvider();
         this.db = getFirestore(app);
+        console.log("firebase init")
 
         // Initialize analytics only if supported
         isAnalyticsSupported().then((supported) => {
@@ -54,8 +60,6 @@ class FirebaseApi {
             this.analytics = null;
         });
 
-        // Listen for authentication state changes
-        this.auth.onAuthStateChanged(this.authStateChanged.bind(this));
     }
 
     // Callback to handle auth state change
@@ -77,18 +81,28 @@ class FirebaseApi {
         try {
             const result = await signInWithPopup(this.auth, this.googleProvider);
             console.log(result);
-            this.currentUser = result.user.uid;
+            if (typeof window !== "undefined") {
+                // Now it's safe to use localStorage
+                this.currentUser = sessionStorage.setItem("currentUser", result.user.uid);
+                console.log(sessionStorage);
+
+            }
+
         } catch (error) {
             console.error('Error signing in with Google:', error);
             throw error;
         }
     }
 
-    // Sign Out method
+    // todo: fix problem this.auth undefiend Sign Out method
     async signOut() {
         try {
-            await firebaseSignOut(this.auth);
-            this.logAnalyticsEvent('logout');
+            if (this.auth != null) {
+              this.currentUser = ""; // Set currentUser to empty string (optional)
+              await firebaseSignOut(this.auth);
+            } else {
+              console.warn("Auth instance not found. Skipping sign out.");
+            }
         } catch (error) {
             console.error('Error signing out:', error);
             throw error;
@@ -116,6 +130,7 @@ class FirebaseApi {
                 members: members,
                 subject: subject,
                 teamName: teamName,
+                userId: this.currentUser,
                 createdAt: new Date(),
             });
             return docRef.id;
@@ -135,6 +150,7 @@ class FirebaseApi {
                 emailAddress: emailAddress,
                 phoneNum: phoneNum,
                 medicalInfo: medicalInfo,
+                userId: this.currentUser,
                 updatedAt: new Date(),
             });
             return docId;
