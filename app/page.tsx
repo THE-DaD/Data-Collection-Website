@@ -58,15 +58,15 @@ export default function HomePage() {
                   <CardContent className="p-6">
                     <h3 className="text-xl font-semibold mb-2 text-red-500">חדשנות</h3>
                     <p className="text-gray-400">
-                      חינוך רפואי מתקדם המשתמש בטכנולוגיה ומחקר עדכניים.
+                      פיתוח כלים שישפרו את איכות המדריך, איכות החובש ואת אופן הלמידה
                     </p>
                   </CardContent>
                 </Card>
                 <Card className="bg-white/5 border-red-800">
                   <CardContent className="p-6">
-                    <h3 className="text-xl font-semibold mb-2 text-red-500">מצוינות</h3>
+                    <h3 className="text-xl font-semibold mb-2 text-red-500">התייעלות</h3>
                     <p className="text-gray-400">
-                      סגל עולמי המחויב לעיצוב עתיד הבריאות.
+                      איסוף נתונים והפקת לקחים בזמן אמת אשר יגדילו את תפוקת המדריך 
                     </p>
                   </CardContent>
                 </Card>
@@ -74,7 +74,8 @@ export default function HomePage() {
                   <CardContent className="p-6">
                     <h3 className="text-xl font-semibold mb-2 text-red-500">השפעה</h3>
                     <p className="text-gray-400">
-                      יצירת שינוי בבריאות באמצעות מחקר וטיפול בחולים.
+                     יצירת סטנדרט חדש להכשרה של חייל בצה"ל
+                  
                     </p>
                   </CardContent>
                 </Card>
@@ -87,13 +88,13 @@ export default function HomePage() {
             <div className="absolute inset-0 bg-gradient-to-b from-red-900/20 to-black" />
             <div className="relative container px-4 md:px-6 text-center">
               <h2 className="text-3xl md:text-5xl font-bold mb-16 bg-gradient-to-l from-white to-red-500 bg-clip-text text-transparent">
-                סיפורי סטודנטים
+                AI  ישנה את עתיד ההוראה והלמידה
               </h2>
               <div className="max-w-3xl mx-auto">
                 <blockquote className="text-xl md:text-2xl text-gray-300 italic">
-                  &ldquo;הגישה החדשנית לחינוך רפואי כאן שינתה את הבנתי לגבי בריאות והכינה אותי לעתיד הרפואה.&rdquo;
+                  &ldquo;בינה מלאכותית תשפיע לא רק על הדרך שבה אנחנו עובדים, אלא גם על הדרך שבה אנחנו לומדים. יש לה את הכוח להתאים אישית באופן דרמטי את החינוך, ולהפוך אותו ליעיל, ממוקד וזמין יותר לכל התלמידים, ללא קשר לרקע שלהם.&rdquo;
                 </blockquote>
-                <p className="mt-6 text-red-500">מחזור 2024</p>
+                <p className="mt-6 text-red-500">קלאוס שוואב (מייסד הפורום הכלכלי העולמי)</p>
               </div>
             </div>
           </section>
