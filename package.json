@@ -21,6 +21,7 @@
     "firebase": "^11.0.2",
     "lodash": "^4.17.21",
     "lucide-react": "^0.460.0",
+    "netlify": "^13.1.21",
     "next": "^14.2.18",
     "react": "^18",
     "react-dom": "^18",
