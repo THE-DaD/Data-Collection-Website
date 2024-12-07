@@ -1,6 +1,6 @@
 'use client'
 import firebaseapi from '../../firebase/firebaseapi';
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -16,6 +16,9 @@ export default function PersonalInfoPage() {
     background: ''
   })
 
+  useEffect(() =>{
+    console.log(firebaseapi.currentUser)
+  },[])
   const resetForm = () =>{
     setFormData({
       name: '',
