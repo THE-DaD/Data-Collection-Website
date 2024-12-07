@@ -19,7 +19,7 @@ export default function SignUp() {
   
   return (
     <div style={{width: "100%", height: "100%", overflow: "hidden"}}>
-      <div style={{position: "absolute", top: "0%", left: "1%"}}>
+      <div style={{position: "absolute", top: "0%", right: "1%", opacity: "0.6"}}>
       <header className="">
           <div className="">
             <a 
