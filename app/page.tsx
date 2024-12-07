@@ -1,11 +1,23 @@
+'use client'
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import firebaseapi from '../firebase/firebaseapi';
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
+
+
+import { useRouter } from 'next/navigation'; // Correct import for Next.js router
 
 export default function HomePage() {
-    
+  const router = useRouter(); // useRouter must be called at the top level
+  const [refresh, setRefresh] = useState(false);
+
+  useEffect(() => {
+    if (!refresh) {
+      setRefresh(true); // Update state to avoid infinite loop
+      router.push('/?refresh=true'); // Redirect with query parameter
+    }
+  }); // Dependency array ensures effect runs once when needed
   return (
     <div className="flex flex-col min-h-screen bg-black text-white" dir="rtl">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-red-900/20 via-black to-black" />

@@ -22,12 +22,12 @@ export default function SignUp() {
       <div style={{position: "absolute", top: "0%", left: "1%"}}>
       <header className="">
           <div className="">
-            <Link 
+            <a 
               href="/" 
             >
               חזרה לדף הבית
               <ArrowRight className="w-4 h-4 mr-2" />
-            </Link>
+            </a>
           </div>
         </header>
       </div>
